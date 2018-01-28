@@ -24,9 +24,7 @@ object Lists {
    * @return The sum of all elements in `xs`
    */
     def sum(xs: List[Int]): Int = {
-        var x=0
-        xs.foreach( x += _)
-        x
+        xs.fold(0){ (z,i) => z + i }
     }
 
 
@@ -44,12 +42,6 @@ object Lists {
    * @throws java.util.NoSuchElementException if `xs` is an empty list
    */
     def max(xs: List[Int]): Int = {
-        var x= 0
-        def getBigger(a: Int, b: Int): Int =
-            {
-                if( a > b ) a else b
-            }
-        xs.foreach( y=> x = getBigger(y, x) )
-        x
+        xs.fold(0){ (z,i) => if( z > i ) z else i }
     }
   }
