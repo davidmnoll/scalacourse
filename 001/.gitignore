@@ -1,0 +1,7 @@
+build.sbt
+assignment.sbt
+target
+project
+scalastyle
+!src/*
+!test/*
