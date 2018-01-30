@@ -1,4 +1,4 @@
-package session
+package wk1
 
 
 object Session {
@@ -9,7 +9,7 @@ object Session {
         def sqrtIter(guess: Double): Double =
             if(isGoodEnough(guess)) guess
             else sqrtIter(improve(guess))
-            
+
         def isGoodEnough(guess: Double) =
             abs(guess * guess - x) < 0.001*x
 

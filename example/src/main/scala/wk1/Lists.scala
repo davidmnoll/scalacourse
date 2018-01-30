@@ -1,4 +1,4 @@
-package example
+package wk1
 
 
 object Lists {
