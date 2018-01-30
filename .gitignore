@@ -1,7 +1,7 @@
 .DS_store
-build.sbt
-assignment.sbt
-target
-project
-scalastyle
+*/build.sbt
+*/assignment.sbt
+*/target
+*/project
+*/scalastyle
 !src/*
