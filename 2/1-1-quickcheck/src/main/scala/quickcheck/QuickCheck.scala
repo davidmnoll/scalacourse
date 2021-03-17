@@ -32,5 +32,41 @@ abstract class QuickCheckHeap extends Properties("Heap") with IntHeap {
     findMin(h) == ( if (a < b) a else b)
   }
 
+  property("delmin") = forAll { ( a: Int )  =>
+    val h =  insert(a, empty)
+    isEmpty(deleteMin(h))
+  }
+
+  property("gen2") = forAll{ (h1: H, h2: H) =>
+      val correctVal = if( isEmpty(h1) )
+        if ( isEmpty(h2) ) empty
+        else findMin(h2)
+      else
+        if (isEmpty(h2)) findMin(h1)
+        else {
+          val min1 = findMin(h1)
+          val min2 = findMin(h2)
+          if (min1 < min2 ) min1 else min2
+        }
+      val meldHeap = meld(h1, h2)
+      val check1 = findMin(meldHeap)
+      if(isEmpty(meldHeap)) correctVal.equals(empty)
+      else findMin(meldHeap).equals(correctVal)
+  }
+
+  property("sorted") = forAll{ (h: H) =>
+    def nextIsGreater(h:H, lastVal:A, passed:Boolean): Boolean = {
+        if (isEmpty(h))
+          passed
+        else passed && {
+            nextIsGreater(deleteMin(h), findMin(h), passed && findMin(h) >= lastVal)
+        }
+    }
+    if (isEmpty(h)) true
+    else {
+      val start = findMin(h)
+      nextIsGreater(h, start, true)
+    }
+  }
 
 }
