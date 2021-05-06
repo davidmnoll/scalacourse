@@ -1,8 +1,9 @@
 .DS_store
-*/build.sbt
-*/assignment.sbt
-*/target
-*/project
-*/scalastyle
+build.sbt
+assignment.sbt
+target*
+project*
+web-ui*
+scalastyle
 !src/*
 .idea*
